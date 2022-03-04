@@ -17,6 +17,15 @@ public class Queue {
 		queue.enqueu(70);
 
 		queue.display();
+		
+		queue.dequeue();
+		queue.display();
+		queue.dequeue();
+		queue.dequeue();
+		queue.display();
+		
+
+		
 
 	}
 }

@@ -35,7 +35,8 @@ public class QueueServices {
 	public void enqueu(int data) {
 		Node newNode = new Node(data);
 		if (tail == null) {
-			tail = head = newNode;
+			tail = newNode;
+			head = newNode;	
 			return;
 		}
 		tail.next = newNode;
@@ -56,13 +57,20 @@ public class QueueServices {
 			return -1;
 		}
 		int front = head.data;
+		//if single element in LinkedList
 		if (head == tail) {
 			tail = null;
 		}
 		head = head.next;
+		
 		return front;
 	}
 
+	/**
+	 * [4] Method peep to check the head or first element
+	 * 1. In this we return the head data as it is the first element. 
+	 * @return: we return the head data
+	 */
 	public int peek() {
 		if (isEmpty()) {
 			return -1;
@@ -70,11 +78,25 @@ public class QueueServices {
 		return head.data;
 	}
 	
+	/**
+	 * [5] Method to print the Queue
+	 * 1. If head is null then the Queue is empty
+	 * 2. Here we are printing the current node data and update it. 
+	 */
 	public void display() {
-		System.out.println("Elements in the queue are : ");
-		while(!isEmpty()) {
-			System.out.println(peek());
-			dequeue();
+		if(head == null) {
+			System.out.println("Queue is empty");
+			return;
+		}
+		System.out.println("Data in the queue is: ");
+		//we are not moving the head to traverse. We are assigning the currNode to head as changing the currNode
+		Node currNode = head;
+		//Here we are traversing till the currNode is not null and then display the data of currNode 
+		while(currNode!= null) {
+			System.out.println(currNode.data);
+			// then we are incrementing the currNode to next
+			currNode = currNode.next;
+		}
 		} 
 	}
-}
+
